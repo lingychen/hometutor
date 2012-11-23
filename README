@@ -1,0 +1,8 @@
+Home Tutor
+=====================================
+1. Introduction
+This is a web application for home tutors. In this application, you can register as a home tutor, or you can find a home tutor according to your own requirements.
+It's not finished at this moment.
+
+2. Basic info
+It's based on play framework (2.0.4) and postgresql, and now I'm using eclispe for java developer (3.6.2) and sublime to develop.
