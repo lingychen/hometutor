@@ -1,0 +1,22 @@
+@(loginForm: Form[Syslogin])
+@import helper._
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) }
+
+@main {
+    @if(flash.containsKey("errormsg")) {
+        <div class="alert alert-error">
+            <strong>@Messages(flash.get("errormsg"))</strong>
+        </div>
+    } 
+    @form(action = routes.Application.login, args = 'class->"form-horizontal") {
+        @inputText(loginForm("email"), '_label -> "Email地址")
+        @inputText(field=loginForm("passwd"), args='_label -> "登录密码")
+        <div class="control-group">
+            <div class="controls">
+                <label class="checkbox"><input id="chk_alive" type="checkbox"> 记住我 </label>
+                <button type="submit" class="btn btn-primary"> 登 录 </button>&nbsp;&nbsp;
+                <a class="btn-link" href="/">忘记密码了？</a>
+            </div>
+        </div>
+    }
+}

@@ -1,0 +1,65 @@
+@(ticketForm: Form[Ticket])
+@import helper._
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) }
+
+@main {
+    @if(flash.containsKey("errormsg")) {
+        <div class="alert alert-error">
+            <strong>@Messages(flash.get("errormsg"))</strong>
+        </div>
+    }
+    @form(action = routes.Application.saveTicket, args = 'class->"form-horizontal") {
+        @inputText(ticketForm("tutor"), '_label -> "教员编号")
+        @select(
+            field = ticketForm("subjectId"), 
+            options = options(
+                "-1" -> "请选择",
+                "1" -> "数学",
+                "2" -> "语文",
+                "3" -> "英语"
+            ),
+            args = '_label -> "求教科目"
+        )
+        @select(
+            field = ticketForm("gradeId"), 
+            options = options(
+                "-1" -> "请选择",
+                "1" -> "学前",
+                "2" -> "小学",
+                "3" -> "初中"
+            ),
+            args = '_label -> "学生年级"
+        )
+        @textarea(field=ticketForm("comments"), args='_label -> "学生详情")
+        @select(
+            field = ticketForm("district"), 
+            options = options(
+                "-1" -> "请选择",
+                "1" -> "渝中区",
+                "2" -> "杨家坪",
+                "3" -> "沙坪坝"
+            ),
+            args = '_label -> "地区"
+        )
+        @select(
+            field = ticketForm("zone"), 
+            options = options(
+                "-1" -> "请选择",
+                "1" -> "上清寺",
+                "2" -> "学田湾",
+                "3" -> "小龙坎"
+            ),
+            args = '_label -> "位置"
+        )
+        @inputText(ticketForm("contact"), '_label->"联系人")
+        @inputText(ticketForm("phone"), '_label->"联系电话")
+
+        <div class="control-group">
+            <div class="controls">
+                <label class="checkbox"><input id="chk_agree" type="checkbox">本人保证上述信息真实有效</label>
+                <button type="submit" class="btn btn-primary"> 确 定 </button>
+            </div>
+        </div>
+    }
+
+}

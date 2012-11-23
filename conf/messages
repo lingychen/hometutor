@@ -1,0 +1,7 @@
+# Messages
+msg.login.notexist=出错啦，你输入的email地址还未注册。
+msg.login.register.failed=出错啦，注册失败，请重试。
+msg.login.register.completed=恭喜您，注册成功。
+computers.list.title={0,choice,0#No computers|1#One computer|1<{0,number,integer} computers} found
+
+

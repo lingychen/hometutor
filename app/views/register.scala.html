@@ -1,0 +1,41 @@
+@(loginForm: Form[Syslogin])
+@import helper._
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) }
+
+@main {
+    @if(flash.containsKey("errormsg")) {
+        <div class="alert alert-error">
+            <strong>@Messages(flash.get("errormsg"))</strong>
+        </div>
+    }
+    @form(action = routes.Application.register, args = 'class->"form-horizontal") {
+        @inputText(loginForm("email"), '_label -> "Email地址")
+        @inputText(field=loginForm("passwd"), args='_label -> "登录密码")
+        <div class="control-group">
+            <label class="control-label" for="passwdAgain">再输入一次</label>
+            <div class="controls">
+                <input type="password" id="passwdAgain">
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <label class="checkbox"><input id="chk_agree" type="checkbox">阅读并接受本网站协议</label>
+                <button type="submit" class="btn btn-primary"> 注 册 </button>
+            </div>
+        </div>
+    }
+    <textarea style="margin-left: 80px; width: 80%; height: 200px;" readonly>
+      我的家教(Hometutor)网站协议
+      1. 
+      2. 
+      3. 
+      4. 
+      5. 
+      6. 
+      7. 
+      8. 
+      9. 
+      10. 
+    </textarea>
+
+}
